@@ -1,0 +1,48 @@
+//Name: Oscar Cabrera
+//Date: 04/10/2023
+
+#include <iostream>
+#include <iomanip>
+#include <map>
+using namespace std;
+
+void printMap(map<int, string>);
+
+int main() {
+    // Key and value menu items in a map
+    map<int, string> cafeteria =
+    {{1, ": Steak and Eggs"}, {2, ": Beef Goulash"},
+    {3, ": Make Your Own Pizzas"}, {4, ": Veggie Lasagna"},
+    {5, ": BBQ Pork"}};
+
+    // erasing a map entry
+    cout << "\nErasing entry #3:\nBefore:\n";
+    printMap(cafeteria);
+    cout << "After:\n";
+    cafeteria.erase(3); // Erasing entry 3
+    cafeteria[2] = ": Beef Stew"; // Change entry 2 to "Beef Stew"
+    printMap(cafeteria);
+
+    cout << "Searching for the value" << cafeteria.at(5) << endl;
+    
+    // searching for a specific key
+    // the .count() method will return 0 if not found, 1 if found.
+    int term0 = 5;
+    cout << "BBQ Pork found with key value: " << term0 << endl;
+    if (cafeteria.count(term0)) // if goats.count() > 0 in other words
+        cout << "\nSearching for the key: " << term0  << "\nKey: " << term0 << " | Value" << cafeteria.at(term0) << endl;
+
+
+    return 0;
+    
+}
+
+// printMap function
+void printMap(map<int, string> mp) {
+    const int W1 = 4;
+    cout << "\n";
+    for (auto element: mp)
+        cout << setw(W1) << element.first 
+             << element.second << endl;
+    cout << "Total key menu items in map: " << mp.size() << endl << endl;
+}
